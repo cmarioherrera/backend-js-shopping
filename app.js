@@ -5,12 +5,14 @@
 const express = require('express');
 const http = require('http');
 const expressConfig = require('./config/express');
+const routeConfig = require('./routes');
 
 // setup server
 const app = express();
 const server = http.createServer(app);
 
 expressConfig(app);
+routeConfig(app);
 
 const config = {
   port: 3000,
