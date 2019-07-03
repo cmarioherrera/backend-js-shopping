@@ -26,11 +26,6 @@ const server = http.createServer(app);
 expressConfig(app);
 routeConfig(app);
 
-const config = {
-  port: 3000,
-  ip: '127.0.0.1',
-};
-
 // Start server
 function startServer() {
   app.shoppingCarBK = server.listen(config.port, config.ip, () => {
