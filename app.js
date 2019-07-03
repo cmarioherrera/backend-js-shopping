@@ -4,8 +4,20 @@
 
 const express = require('express');
 const http = require('http');
+const mongoose = require('mongoose');
 const expressConfig = require('./config/express');
 const routeConfig = require('./routes');
+const config = require('./config/environment');
+
+//
+mongoose.connect(config.mongo.uri, { useNewUrlParser: true });
+mongoose.connection.on('error', (err) => {
+  console.error('Error', 'Mongodb connection error', {
+    data: err,
+    time: new Date().toISOString(),
+  });
+  process.exit(-1);
+});
 
 // setup server
 const app = express();
